@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.repository.UserRepository">
+    <cache type="com.example.caches.mybatis.MybatisRedisCache"/>
+
+    <resultMap id="userResultMap" type="com.example.domain.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.example.domain.User">
+        INSERT INTO users(username, password) VALUES (#{username}, #{password})
+    </insert>
+
+
+</mapper>
